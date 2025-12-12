@@ -16,11 +16,11 @@ Identifies OpenCode sessions where write tool operations contain the pattern `</
 Install globally and use from anywhere:
 
 ```bash
-# Install from local directory
-uv tool install /path/to/oc_session_bulkexport
+# Install from GitHub
+uv tool install git+https://github.com/rwese/opencode_session_analyzer.git
 
-# Or install from git (if published)
-# uv tool install git+https://github.com/user/oc_session_bulkexport
+# Or install from local directory
+uv tool install /path/to/opencode_session_analyzer
 ```
 
 This creates two commands available system-wide:
@@ -38,8 +38,9 @@ oc-session-export
 ### Option 2: Run directly with uv
 
 ```bash
-# Clone or download the repository
-cd /path/to/oc_session_bulkexport
+# Clone the repository
+git clone https://github.com/rwese/opencode_session_analyzer.git
+cd opencode_session_analyzer
 
 # Run without installation
 uv run session_analyzer.py
@@ -236,7 +237,7 @@ Errors are logged to stderr only in verbose mode.
 
 **1. Install the tool**:
 ```bash
-$ uv tool install /path/to/oc_session_bulkexport
+$ uv tool install git+https://github.com/rwese/opencode_session_analyzer.git
 Installed 2 executables: oc-session-analyzer, oc-session-export
 ```
 
