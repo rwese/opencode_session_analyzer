@@ -219,10 +219,6 @@ def analyze_sessions(verbose=False):
                     print(f"File Path: {match['filePath']}", file=sys.stderr)
                     print(f"Message ID: {match['messageID']}", file=sys.stderr)
                     print(f"JQ Path: {match['jqPath']}", file=sys.stderr)
-                    print(f"\nContent:", file=sys.stderr)
-                    print(f"{'-' * 80}", file=sys.stderr)
-                    print(match["content"], file=sys.stderr)
-                    print(f"{'-' * 80}", file=sys.stderr)
 
     if verbose:
         print(
