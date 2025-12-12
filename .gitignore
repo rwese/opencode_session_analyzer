@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# UV tool
+.uv/
+
+# Output directories
+found/
+exports/
+
+# Temporary files
+*.log
+*.tmp
+/tmp/
+
+# Ruff cache
+.ruff_cache/
+
+# Agent working directories (keep structure, ignore content)
+.agent/Backlog/*
+.agent/Chunks/*
+.agent/Worktrees/*
+!.agent/Backlog/.gitkeep
+!.agent/Chunks/.gitkeep
+!.agent/Worktrees/.gitkeep
+
+# Keep completed work and research
+!.agent/COMPLETED_Backlog/
+!.agent/COMPLETED_Chunks/
+!.agent/Research/
