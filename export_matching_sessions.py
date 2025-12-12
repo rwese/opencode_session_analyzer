@@ -28,14 +28,16 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     analyzer_script = os.path.join(script_dir, "session_analyzer.py")
 
-    # Verify session_analyzer.py exists
+    # If session_analyzer.py doesn't exist locally, try to run it from GitHub
     if not os.path.exists(analyzer_script):
         print(
-            f"Error: session_analyzer.py not found at {analyzer_script}",
+            "session_analyzer.py not found locally, using GitHub version...",
             file=sys.stderr,
         )
-        print("Make sure both scripts are in the same directory.", file=sys.stderr)
-        sys.exit(1)
+        analyzer_script = "https://raw.githubusercontent.com/rwese/opencode_session_analyzer/main/session_analyzer.py"
+        run_command = ["uv", "run", analyzer_script]
+    else:
+        run_command = ["python3", analyzer_script]
 
     # Create found/ directory in current working directory
     found_dir = "found"
@@ -47,7 +49,7 @@ def main():
     print("Running session analyzer to find matching sessions...", file=sys.stderr)
     try:
         result = subprocess.run(
-            ["python3", analyzer_script],
+            run_command,
             capture_output=True,
             text=True,
             check=True,

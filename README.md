@@ -1,13 +1,14 @@
-# OpenCode Session Export Analyzer
+# OpenCode Session Analyzer
 
-Two complementary tools for analyzing and exporting OpenCode sessions:
-
-1. **session_analyzer.py** - Find sessions with specific patterns in write tools
-2. **export_matching_sessions.py** - Export all matching sessions to JSON files
+A single, powerful tool for analyzing and exporting OpenCode sessions.
 
 ## Purpose
 
 Identifies OpenCode sessions where write tool operations contain the pattern `</content>`, which may indicate malformed XML/HTML content or other issues that need attention.
+
+**Two modes**:
+- **Analyze** (default): Find and list matching sessions with metadata
+- **Export** (`--export`): Export all matching sessions to `found/` directory as JSON files
 
 ## Installation
 
@@ -16,34 +17,42 @@ Identifies OpenCode sessions where write tool operations contain the pattern `</
 Execute directly without cloning or installing:
 
 ```bash
-# Run analyzer directly from GitHub
-uv run https://raw.githubusercontent.com/rwese/opencode_session_analyzer/main/session_analyzer.py
+# Find matching sessions
+uv run https://raw.githubusercontent.com/rwese/opencode_session_analyzer/main/oc_session_analyzer.py
 
-# Run export tool directly from GitHub
-uv run https://raw.githubusercontent.com/rwese/opencode_session_analyzer/main/export_matching_sessions.py
+# Export matching sessions to found/ directory
+uv run https://raw.githubusercontent.com/rwese/opencode_session_analyzer/main/oc_session_analyzer.py --export
+
+# Verbose mode
+uv run https://raw.githubusercontent.com/rwese/opencode_session_analyzer/main/oc_session_analyzer.py --verbose --export
 ```
 
-**Why this works**: Scripts include [PEP 723](https://peps.python.org/pep-0723/) inline metadata, so `uv` can run them directly!
+**Why this works**: Script includes [PEP 723](https://peps.python.org/pep-0723/) inline metadata, so `uv` can run it directly!
 
 ### Option 2: Install as uv tool (For frequent use)
 
-Install globally and use short commands:
+Install globally and use short command:
 
 ```bash
 # Install from GitHub
 uv tool install git+https://github.com/rwese/opencode_session_analyzer.git
 ```
 
-This creates two commands available system-wide:
-- `oc-session-analyzer` - Find matching sessions
-- `oc-session-export` - Export matching sessions to files
+This creates `oc-session-analyzer` command available system-wide.
 
 **Usage after installation**:
 ```bash
 # Run from anywhere
 cd /any/directory
+
+# Find matching sessions
 oc-session-analyzer
-oc-session-export
+
+# Export matching sessions
+oc-session-analyzer --export
+
+# Verbose mode
+oc-session-analyzer --verbose --export
 ```
 
 ### Option 3: Clone and run locally
@@ -54,12 +63,12 @@ git clone https://github.com/rwese/opencode_session_analyzer.git
 cd opencode_session_analyzer
 
 # Run without installation
-uv run session_analyzer.py
-uv run export_matching_sessions.py
+uv run oc_session_analyzer.py
+uv run oc_session_analyzer.py --export
 
 # Or traditional Python
-python session_analyzer.py
-python export_matching_sessions.py
+python oc_session_analyzer.py
+python oc_session_analyzer.py --export --verbose
 ```
 
 **Requirements**:
